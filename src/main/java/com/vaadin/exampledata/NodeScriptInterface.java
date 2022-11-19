@@ -3,6 +3,7 @@ package com.vaadin.exampledata;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -16,7 +17,7 @@ public class NodeScriptInterface {
 
     private static void init() throws InterruptedException, IOException {
         if (node == null) {
-            File chanceTempFile = File.createTempFile("exampleutil-bundle", "js");
+            File chanceTempFile = Files.createTempFile("exampleutil-bundle", "js").toFile();
             chanceTempFile.deleteOnExit();
             try (FileOutputStream out = new FileOutputStream(chanceTempFile)) {
                 IOUtils.copyLarge(
